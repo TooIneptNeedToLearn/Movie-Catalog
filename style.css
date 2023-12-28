@@ -18,9 +18,15 @@ body {
 header {
     padding:1rem;   
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between; 
+  align-items: center; 
     background-color: var(--secondary-color);
 }
+
+h1 {
+    color: var(--primary-color);
+    margin: 0; 
+  }
 
 .search {
     background-color: transparent;
@@ -107,3 +113,14 @@ main {
   .red {
     background-color: #f44336;
   }
+
+  .poster-banner {
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .Movie-header {
+    cursor: pointer;
+  }
+  
+  

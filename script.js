@@ -1,6 +1,7 @@
 const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
+const container = document.getElementById("container");
 
 const baseurl = "https://api.themoviedb.org/3";
 const api =
@@ -8,33 +9,7 @@ const api =
 const image_url = "https://image.tmdb.org/t/p/w500";
 const search_url =
   baseurl + "/search/movie?api_key=d6d60f5f0e645febd6593c7c8b0e2c38";
-
-getMovies(api);
-function getMovies(url) {
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      showMovies(data.results);
-    });
-}
-
-function showMovies(data) {
-  main.innerHTML = "";
-
-  data.forEach((movie) => {
-    const { title, poster_path, vote_average } = movie;
-    const movieelement = document.createElement("div");
-    movieelement.classList.add("movie");
-    movieelement.innerHTML = `
-        <img src="${image_url + poster_path}" alt ="${title}">
-        <div class"movie-info">
-            <h3>${title}</h3>
-            <span class="${getColor(vote_average)}">${vote_average}</span>
-        </div>`;
-
-    main.appendChild(movieelement);
-  });
-}
+const comp_overview = "";
 
 function getColor(vote) {
   if (vote >= 8) {
@@ -46,11 +21,44 @@ function getColor(vote) {
   }
 }
 
+const showMovies = async () => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=d6d60f5f0e645febd6593c7c8b0e2c38&language=en-US&page=1`
+  );
+  const data = await response.json();
+  console.log(data);
+  container.innerHTML = data.results.map(
+    ({ id, backdrop_path, original_title, vote_average }) => `
+  <button class="poster-banner" ondblclick="moviedetails(${id})">
+      <img src="${image_url + backdrop_path}" alt ="${original_title}">
+      <div class"movie-info">
+          <h3>${original_title}</h3>
+          <span class="${getColor(vote_average)}">${vote_average}</span>
+      </div>
+  </button>`
+  );
+};
+
+const moviedetails = async (id) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=d6d60f5f0e645febd6593c7c8b0e2c38&language=en-US`
+  );
+  const data = await response.json();
+  console.log(data);
+  container.innerHTML = `<div class="con">
+  <h1>Title: ${data.original_title}</h1>
+  <h1>Genres: <span>${data.genres.map((data) => data.name)}</span></h1>
+  <p>${data.overview}</p>
+  </div>`;
+};
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const searchform = search.value;
   if (searchform) {
-    getMovies(search_url + "&query=" + searchform);
+    showMovies(search_url + "&query=" + searchform);
   }
 });
+
+showMovies();
