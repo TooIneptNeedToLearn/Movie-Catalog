@@ -1,4 +1,3 @@
-const main = document.getElementById("main");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const container = document.getElementById("container");
@@ -64,6 +63,7 @@ const moviedetails = async (id) => {
   const data = await response.json();
   console.log(data);
   container.innerHTML = `<div class="con">
+  <img src="${image_url + data.backdrop_path}"></img>
   <h1>Title: ${data.original_title}</h1>
   <h1>Genres: <span>${data.genres.map((data) => data.name)}</span></h1>
   <p>${data.overview}</p>
