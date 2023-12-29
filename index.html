@@ -8,14 +8,16 @@
   </head>
   <body>
     <header>
-      <h1 onclick="showMovies()" class="Movie-header">Movie Catalog</h1>
+      <h1 onclick="showMovies()" class="Movie-header">Ric's Movie Catalog</h1>
       <form id="form">
         <input type="text" id="search" class="search" placeholder="Search" />
       </form>
     </header>
     <div class="container" id="container"></div>
-    <button id="prev" onclick="prevPage()">Previous</button>
-    <button id="next" onclick=" nextPage()">Next</button>
+    <div class="navbuttons" id="navbuttons">
+      <button id="prev" onclick="prevPage()">Previous Page</button>
+      <button id="next" onclick=" nextPage()">Next Page</button>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>

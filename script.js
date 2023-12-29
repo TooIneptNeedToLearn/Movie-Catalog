@@ -56,6 +56,7 @@ const showMovies = async () => {
   </div>`
     )
     .join("");
+  document.getElementById("navbuttons").style.display = "";
 };
 
 const searchmovies = async (name) => {
@@ -75,6 +76,7 @@ const searchmovies = async (name) => {
     </div>`
     )
     .join("");
+  document.getElementById("navbuttons").style.display = "none";
 };
 
 const moviedetails = async (id) => {
@@ -114,6 +116,7 @@ const moviedetails = async (id) => {
     </div>
 
   </div>`;
+  document.getElementById("navbuttons").style.display = "none";
 };
 
 form.addEventListener("submit", (e) => {

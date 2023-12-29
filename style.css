@@ -159,3 +159,31 @@ h1 {
   grid-template-columns: auto auto auto auto;
 }
 
+.navbuttons {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  z-index: 999;
+}
+
+#prev,
+#next {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 20px;
+  color: var(--primary-color);
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#prev:hover,
+#next:hover {
+  background-color: transparent;
+  color: var(--secondary-color);
+}
+
