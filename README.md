@@ -5,7 +5,7 @@
 
 ## WHAT:
 
-This project was assigned by our professor to demonstrate our understanding of web development by creating a JavaScript program that interfaces with TheMovieDB REST API. The program is designed to retrieve essential movie data, presenting it through an HTML structure with CSS styling. Additionally, it includes features allowing users to navigate through movie entries.
+This project was assigned by our professor to demonstrate our understanding of web development by creating a JavaScript program that interfaces with TheMovieDB REST API. The program is designed to retrieve essential movie data, presenting it through an HTML structure with CSS styling. Additionally, it includes features allowing users to navigate through movie entries and features that asesses the ratings via coloration.
 
 ## WHY:
 
